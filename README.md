@@ -1,46 +1,78 @@
 # 8.2-Draw-A-Polygon
-In this lab, you will use user input and conditional statements to identify shapes based on the number of sides and some other properties as given by the user. Your program will then draw the polygon identified by the user.
 
-## Identify and draw the polygon
-1. Write a Python program that asks the user to think of a shape and input how many sides it has. 
-2. Your program must be able to identify and draw the following shapes without the user naming the type of polygon:
-   
-| Number of Sides | Polygon Name |
-|---|---|
-|3|Triangle|
-|4|Quadrilateral|
-|5|Pentagon|
-|6|Hexagon|
-|any other number|Unknown|
+**Objective:** 
+In this lab, you will create a game using the Turtle graphics module. The game will involve blocks, players, bullets, and score updates.
+
+**Game Description:**
+
+Create a game where two players control "turtles" at the bottom of the screen and shoot "bullets" upwards to destroy "blocks" at the top.
+
+* **Playing Area:** The game area is a rectangle with dimensions 220 x 400 pixels.
+* **Blocks:** Three rows of blocks are positioned at the top of the game area.
+* **Players:** Two players are positioned at the bottom, each controlling a "turtle" that can move left and right and fire bullets.
+* **Bullets:** Each player can fire up to five bullets at a time. Bullets move upwards and are removed when they hit a block or reach the top of the screen.
+* **Block Hits:** Blocks change color when hit: their initial color, then orange, then red. After three hits, a block is destroyed.
+* **Scoring:** Each player earns a point for destroying a block. Scores are displayed on the screen.
+
+**Implementation Requirements:**
+
+1.  **Object-Oriented Design:**
+    * Create the following classes, each inheriting from the `turtle.Turtle` class:
+        * `Block`: Represents a block in the game.
+        * `Player`: Represents a player and their "turtle."
+        * `Bullet`: Represents a bullet fired by a player.
+        * `Score`: Represents the score display.
+
+2.  **Class Implementations:**
+
+    * **`Block` Class:**
+        * Attributes: color, position, hit count, hit colors (initial, orange, red).
+        * Methods: `delete()` (removes the block), `strike()` (handles a bullet hit, updates color, and increments hit count).
+
+    * **`Player` Class:**
+        * Attributes: color, position, score, controls (keys for movement and firing), list of active bullets.
+        * Methods: `turn_right()`, `turn_left()` (handles player movement), `fire()` (creates and fires a bullet, ensuring the bullet limit).
+
+    * **`Bullet` Class:**
+        * Attributes: color, position, player who fired the bullet.
+        * Methods: `move()` (handles bullet movement), `delete()` (removes the bullet).
+
+    * **`Score` Class:**
+        * Attributes: position, player associated with the score.
+        * Methods: `clear_score()` (clears the displayed score), `update_score()` (updates and displays the score).
+
+3.  **Game Logic:**
+
+    * Initialize the game screen and draw the game border.
+    * Create and place the blocks, players, and score displays.
+    * Implement event handling for player controls (key presses).
+    * Implement a game loop that:
+        * Moves bullets.
+        * Checks for bullet-block collisions.
+        * Updates block states and scores.
+        * Removes bullets that hit blocks or reach the top.
+        * Updates the screen.
+
+4.  **Game Constraints:**
+
+    * The playing area must be 220 x 400 pixels.
+    * Place three rows of blocks at the top of the screen.
+    * Players must be at the bottom of the screen.
+    * Players can only have 5 bullets active at a time.
+    * Blocks must change color, and then be deleted after three hits.
+
+**Rubric:**
+
+| Description                               | Points |
+| :----------------------------------------- | :----- |
+| Correct `Block` class implementation       | 3      |
+| Correct `Player` class implementation      | 3      |
+| Correct `Bullet` class implementation      | 3      |
+| Correct `Score` class implementation      | 3     |
+| Game logic and game loop implementation   | 8      |
+| **Total Points** | **10** |
 
 
-3. Quadrilaterals come in many different varieties. Add code to your program so that, if the user is thinking of a quadrilateral, you ask more questions to find out which type of quadrilateral it is. Your program should give the most specific name that applies. The following table describes the quadrilaterals you should know about from most to least specific:
-   
-|**Property**|**Quadrilateral Name**|
-|---|---|
-|No two sides of the quadrilateral are parallel|Unknown quadrilateral|
-|Two sides are parallel to each other and the remaining two sides are not parallel to each other|Trapezoid|
-|Not a rectangle and each side is parallel to one other side|Parallelogram|
-|Not a square and all four angles have the same measure|Rectangle|
-|All four sides have the same length|Square|
-
-
-
-
-
-
-## Rubric:
-
-|Description| Points |
-|---|---|
-|Correctly identifies the polygon to be drawn|3|
-|Function that draws a regular polygon with any number of side.(Triangle, Pentagon, Hexagon,Septagon, Octagon …)|2|
-|Quadrilateral - Square|1|
-|Quadrilateral - Rectangle|1|
-|Quadrilateral - Parallelogram|1|
-|Quadrilateral - Trapezoid|1|
-|Quadrilateral - Irregular Quadrilateral|1|
-|**TOTAL POINTS**|**10**|
 
 
 
